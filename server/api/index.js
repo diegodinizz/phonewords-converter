@@ -1,6 +1,7 @@
 const express = require('express')
-const { numberValidation, error, response } = require('./helpers/handleErrors')
-const { getPhoneWords } = require('./helpers/numberToWordConverter')
+const numberValidation = require('./helpers/numberValidation')
+const getPhoneWords = require('./helpers/numberToWordConverter')
+const { error, response } = require('./helpers/handleResponse')
 
 const router = express.Router()
 
@@ -9,10 +10,10 @@ router.get('/:number', (req, res) => {
 
   if (numberValidation(req.params.number)) {
     phonewords = getPhoneWords(req.params.number)
-    data = response(true, phonewords, '')
+    data = response(true, phonewords, undefined)
     res.statusCode = 200
   } else {
-    data = response(false, [], error.errorMessage)
+    data = response(false, null, error.errorMessage)
     res.statusCode = 400
   }
 

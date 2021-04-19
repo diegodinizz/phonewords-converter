@@ -35,6 +35,4 @@ const getPhoneWords = number => {
   return result
 }
 
-module.exports = {
-  getPhoneWords
-}
+module.exports = getPhoneWords

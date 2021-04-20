@@ -16,7 +16,8 @@ export const phoneWordsReducer = (state = INITIAL_STATE, action) => {
     case PhoneWordsActionTypes.FETCH_PHONEWORDS_SUCCESS:
       return {
         ...state,
-        isFetching: false
+        isFetching: false,
+        wordsData: action.payload
       }
     case PhoneWordsActionTypes.FETCH_PHONEWORDS_FAILURE:
       return {

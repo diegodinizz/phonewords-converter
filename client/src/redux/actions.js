@@ -15,14 +15,14 @@ export const fetchPhoneWordsFailure = errorMessage => ({
   payload: errorMessage
 })
 
-export const fetchPhoneWordsStartAsync = number => {
+export const fetchPhoneWordsAsync = number => {
   return async dispatch => {
     dispatch(fetchPhoneWordsStart())
 
     try {
       const response = await fetch(`/phonewords/api/${number}`)
       const data = await handleErrors(response)
-      dispatch(fetchPhoneWordsSuccess(data))
+      dispatch(fetchPhoneWordsSuccess(data.phonewords))
     } catch (error) {
       return dispatch(fetchPhoneWordsFailure(error.message))
     }

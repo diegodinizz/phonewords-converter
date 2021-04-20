@@ -1,7 +1,11 @@
-import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+
 import { InputField } from '../components/InputField'
+import { Button } from '../components/Button'
+import { WordList } from '../container/WordList'
+
 import { fetchPhoneWordsAsync } from '../redux/actions'
 
 const Container = styled.div`
@@ -19,19 +23,24 @@ const Title = styled.h1`
 export const Home = () => {
   const [number, setNumber] = useState('')
   const dispatch = useDispatch()
-  const data = useSelector(state => state.wordsData)
 
-  console.log(number)
+  function handleClick () {
+    dispatch(fetchPhoneWordsAsync(number))
+    setNumber('')
+  }
 
   return (
     <Container>
       <Title>Phonewords Converter</Title>
       <InputField
-        name='number'
         value={number}
         placeholder='Only digits from 2 to 9'
         onChange={event => setNumber(event.target.value)}
       />
+      <Button onClick={handleClick} disabled={number === ''}>
+        Submit
+      </Button>
+      <WordList />
     </Container>
   )
 }

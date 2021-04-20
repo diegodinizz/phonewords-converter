@@ -29,15 +29,24 @@ const Input = styled.input`
   }
 `
 
-export const InputField = ({ name, value, placeholder, onChange }) => (
-  <Container>
-    <Label>Phone Number</Label>
-    <Input
-      type='number'
-      name={name}
-      value={value}
-      placeholder={placeholder}
-      onChange={onChange}
-    />
-  </Container>
-)
+export const InputField = ({ value, placeholder, onChange }) => {
+  const handleKeyPress = event => {
+    const charAllowed = new RegExp('^[2-9]+$')
+    if (!charAllowed.test(event.key)) {
+      event.preventDefault()
+    }
+  }
+
+  return (
+    <Container>
+      <Label>Phone Number (Max 5 digits)</Label>
+      <Input
+        value={value}
+        placeholder={placeholder}
+        onChange={onChange}
+        maxLength='5'
+        onKeyPress={handleKeyPress}
+      />
+    </Container>
+  )
+}

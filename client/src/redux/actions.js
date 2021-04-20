@@ -14,6 +14,10 @@ export const fetchPhoneWordsFailure = errorMessage => ({
   payload: errorMessage
 })
 
+export const clearPhoneWords = () => ({
+  type: PhoneWordsActionTypes.CLEAR_PHONEWORDS
+})
+
 export const fetchPhoneWordsAsync = number => {
   return async dispatch => {
     dispatch(fetchPhoneWordsStart())

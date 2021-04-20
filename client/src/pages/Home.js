@@ -3,21 +3,22 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { InputField } from '../components/InputField'
+import { PhoneKeyboard } from '../components/PhoneKeyboard'
 import { Button } from '../components/Button'
 import { WordList } from '../container/WordList'
 
-import { fetchPhoneWordsAsync } from '../redux/actions'
+import { clearPhoneWords, fetchPhoneWordsAsync } from '../redux/actions'
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  color: #41444b;
 `
 
 const Title = styled.h1`
   font-size: 3rem;
-  color: #41444b;
   margin: 3rem 0 0 0;
 `
 
@@ -32,10 +33,22 @@ export const Home = () => {
   const [inputTerm, setInputTerm] = useState('')
   const dispatch = useDispatch()
 
-  function handleClick () {
+  function handleSubmit () {
     dispatch(fetchPhoneWordsAsync(inputTerm))
     setNumber(inputTerm)
     setInputTerm('')
+  }
+
+  function handleClick (event) {
+    if (inputTerm.length <= 5) {
+      setInputTerm([...inputTerm, event.target.value].join(''))
+    }
+  }
+
+  function handleClear () {
+    setInputTerm('')
+    setNumber('')
+    dispatch(clearPhoneWords())
   }
 
   return (
@@ -47,11 +60,13 @@ export const Home = () => {
       <InputField
         value={inputTerm}
         placeholder='Digits valid from 2 to 9'
-        onChange={event => setInputTerm(event.target.value)}
+        onChange={event => setInputTerm([event.target.value].join(''))}
       />
-      <Button onClick={handleClick} disabled={inputTerm === ''}>
+      <PhoneKeyboard onClick={handleClick} />
+      <Button onClick={handleSubmit} disabled={inputTerm === ''}>
         Submit
       </Button>
+      <button onClick={handleClear}>Clear</button>
       <WordList number={number} />
     </Container>
   )

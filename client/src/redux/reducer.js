@@ -1,7 +1,7 @@
 import { PhoneWordsActionTypes } from './types'
 
 const INITIAL_STATE = {
-  wordsData: null,
+  wordsData: [],
   isFetching: true,
   errorMessage: undefined
 }
@@ -24,6 +24,11 @@ export const phoneWordsReducer = (state = INITIAL_STATE, action) => {
         ...state,
         isFetching: false,
         errorMessage: action.payload
+      }
+    case PhoneWordsActionTypes.CLEAR_PHONEWORDS:
+      return {
+        ...state,
+        wordsData: []
       }
     default:
       return state

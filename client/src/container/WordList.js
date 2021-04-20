@@ -19,17 +19,15 @@ const ListContainer = styled.div`
 
 const Title = styled.h1`
   font-size: 1.5rem;
-  color: #41444b;
   text-align: center;
 `
 
 export const WordList = ({ number }) => {
   const wordList = useSelector(state => state.wordsData)
-  const fetching = useSelector(state => state.isFetching)
-  
+
   return (
     <div>
-      {!fetching ? (
+      {wordList.length ? (
         <Container>
           <Title>List of Words for the number: {number}</Title>
           <ListContainer>

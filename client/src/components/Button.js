@@ -12,13 +12,12 @@ const getButtonStyles = props => {
 const Container = styled.button`
   width: auto;
   background-color: #30d158;
-  border-radius: 5px;
   color: #fff;
   cursor: pointer;
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 600;
   height: 50px;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   text-align: center;
   border: none;
   outline: none;

@@ -15,14 +15,13 @@ const Label = styled.p`
 
 const Input = styled.input`
   border: none;
-  border-radius: 5px;
   outline: none;
   padding: 10px;
   width: 100%;
   height: 50px;
   font-size: 17px;
   color: #545454;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 
   ::placeholder {
     color: gainsboro;

@@ -1,4 +1,5 @@
-const MAX_LENGTH = 9
+// Added MAX_LENGTH on node API to prevent overflow
+const MAX_LENGTH = 6
 
 const numberValidation = number => {
   if (!number || number.length >= MAX_LENGTH) return false

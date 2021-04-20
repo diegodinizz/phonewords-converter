@@ -39,12 +39,12 @@ export const InputField = ({ value, placeholder, onChange }) => {
 
   return (
     <Container>
-      <Label>Phone Number (Max 5 digits)</Label>
+      <Label>Phone Number (Max 6 digits)</Label>
       <Input
         value={value}
         placeholder={placeholder}
         onChange={onChange}
-        maxLength='5'
+        maxLength='6'
         onKeyPress={handleKeyPress}
       />
     </Container>

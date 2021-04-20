@@ -1,5 +1,4 @@
 import { PhoneWordsActionTypes } from './types'
-import { handleErrors } from './utils'
 
 export const fetchPhoneWordsStart = () => ({
   type: PhoneWordsActionTypes.FETCH_PHONEWORDS_START
@@ -19,12 +18,15 @@ export const fetchPhoneWordsAsync = number => {
   return async dispatch => {
     dispatch(fetchPhoneWordsStart())
 
-    try {
-      const response = await fetch(`/phonewords/api/${number}`)
-      const data = await handleErrors(response)
-      dispatch(fetchPhoneWordsSuccess(data.phonewords))
-    } catch (error) {
-      return dispatch(fetchPhoneWordsFailure(error.message))
+    const response = await fetch(`/phonewords/api/${number}`)
+    const data = await response.json()
+
+    const { success, error, phonewords } = data
+
+    if (!success) {
+      dispatch(fetchPhoneWordsFailure(error))
     }
+
+    dispatch(fetchPhoneWordsSuccess(phonewords))
   }
 }

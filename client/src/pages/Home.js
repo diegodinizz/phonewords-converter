@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 
 import { InputField } from '../components/InputField'
 import { PhoneKeyboard } from '../components/PhoneKeyboard'
-import { Button } from '../components/Button'
+import { CustomButton } from '../components/CustomButton'
 import { WordList } from '../container/WordList'
 
 import { clearPhoneWords, fetchPhoneWordsAsync } from '../redux/actions'
@@ -26,6 +26,11 @@ const Subtitle = styled.h3`
   font-size: 1rem;
   font-weight: 300;
   margin: 0 0 4rem 0;
+`
+
+const ButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
 `
 
 export const Home = () => {
@@ -63,10 +68,22 @@ export const Home = () => {
         onChange={event => setInputTerm([event.target.value].join(''))}
       />
       <PhoneKeyboard onClick={handleClick} />
-      <Button onClick={handleSubmit} disabled={inputTerm === ''}>
-        Submit
-      </Button>
-      <button onClick={handleClear}>Clear</button>
+      <ButtonsContainer>
+        <CustomButton
+          onClick={handleSubmit}
+          disabled={inputTerm === ''}
+          color='#30d158'
+        >
+          Submit
+        </CustomButton>
+        <CustomButton
+          onClick={handleClear}
+          disabled={inputTerm === ''}
+          color='#AEAEB2'
+        >
+          Clear
+        </CustomButton>
+      </ButtonsContainer>
       <WordList number={number} />
     </Container>
   )

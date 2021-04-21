@@ -10,8 +10,9 @@ const getButtonStyles = props => {
 }
 
 const Container = styled.button`
+  min-width: 85px;
   width: auto;
-  background-color: #30d158;
+  background-color: ${({ backgroundColor }) => backgroundColor};
   color: #fff;
   cursor: pointer;
   font-size: 1rem;
@@ -21,13 +22,13 @@ const Container = styled.button`
   text-align: center;
   border: none;
   outline: none;
-  margin: 2rem;
+  margin: 1rem;
 
   ${getButtonStyles}
 `
 
-export const Button = ({ children, onClick, disabled }) => (
-  <Container onClick={onClick} disabled={disabled}>
+export const CustomButton = ({ children, onClick, disabled, color }) => (
+  <Container onClick={onClick} disabled={disabled} backgroundColor={color}>
     {children}
   </Container>
 )

@@ -2,7 +2,7 @@
 
 https://phonewords-converter.herokuapp.com
 
-The Phonewords Converter is a Full Stack Application built with Node and Express as Backend and React, Redux and Styled Components as Frontend, and hosted on Heroku.
+The Phonewords Converter is a Full Stack Application built with Node and Express as Backend and React, Redux and Styled Components as Frontend. Also, the project is hosted on Heroku.
 
 <img width="1680" alt="Screenshot 2021-04-21 at 15 08 15" src="https://user-images.githubusercontent.com/47988806/115567783-89d1b600-a2b3-11eb-9404-139b3dfcdee8.png">
 

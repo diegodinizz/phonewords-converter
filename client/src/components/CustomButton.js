@@ -25,6 +25,10 @@ const Container = styled.button`
   margin: 1rem;
 
   ${getButtonStyles}
+
+  @media screen and (max-width: 600px) {
+    height: 45px;
+  }
 `
 
 export const CustomButton = ({ children, onClick, disabled, color }) => (

@@ -4,6 +4,10 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 25rem;
+
+  @media screen and (max-width: 600px) {
+    width: 20rem;
+  }
 `
 
 const Label = styled.p`
@@ -11,6 +15,10 @@ const Label = styled.p`
   font-weight: 300;
   font-size: 1rem;
   color: gray;
+
+  @media screen and (max-width: 600px) {
+    font-size: 0.8rem;
+  }
 `
 
 const Input = styled.input`
@@ -25,6 +33,10 @@ const Input = styled.input`
 
   ::placeholder {
     color: gainsboro;
+  }
+
+  @media screen and (max-width: 600px) {
+    height: 40px;
   }
 `
 

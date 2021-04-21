@@ -20,12 +20,28 @@ const Container = styled.div`
 const Title = styled.h1`
   font-size: 3rem;
   margin: 3rem 0 0 0;
+
+  @media screen and (max-width: 600px) {
+    font-size: 2rem;
+  }
+
+  @media screen and (max-width: 375px) {
+    font-size: 1.8rem;
+  }
 `
 
 const Subtitle = styled.h3`
   font-size: 1rem;
   font-weight: 300;
   margin: 0 0 4rem 0;
+
+  @media screen and (max-width: 600px) {
+    font-size: 0.7rem;
+  }
+
+  @media screen and (max-width: 375px) {
+    font-size: 0.6rem;
+  }
 `
 
 const ButtonsContainer = styled.div`

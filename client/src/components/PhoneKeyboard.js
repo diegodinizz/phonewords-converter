@@ -9,11 +9,6 @@ const Container = styled.div`
   margin-top: 1rem;
   background-color: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  /* transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-
-  :hover {
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  } */
 `
 
 const ShowHideContainer = styled.div`
@@ -53,17 +48,37 @@ const Arrow = styled.i`
 `
 
 const showKeyPad = css`
-  display: block;
+  display: grid;
 `
 
 const KeyPadContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  padding: 15px 30px;
   display: none;
+  gap: 10px;
+
+  .row-4 {
+    grid-column-start: 2;
+  }
 
   &.active {
     ${showKeyPad}
+  }
+`
+
+const KeyNumber = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 60px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  background-color: #e8e8e8;
+
+  :hover {
+    background-color: #f4f4f2;
   }
 `
 
@@ -77,31 +92,16 @@ export const PhoneKeyboard = ({ onClick }) => {
         <Arrow className={active ? 'turn' : ''}></Arrow>
       </ShowHideContainer>
       <KeyPadContainer className={active ? 'active' : ''}>
-        <button>1</button>
-        <button value='2' onClick={onClick}>
-          2
-        </button>
-        <button value='3' onClick={onClick}>
-          3
-        </button>
-        <button value='4' onClick={onClick}>
-          4
-        </button>
-        <button value='5' onClick={onClick}>
-          5
-        </button>
-        <button value='6' onClick={onClick}>
-          6
-        </button>
-        <button value='7' onClick={onClick}>
-          7
-        </button>
-        <button value='8' onClick={onClick}>
-          8
-        </button>
-        <button value='9' onClick={onClick}>
-          9
-        </button>
+        <KeyNumber>1</KeyNumber>
+        <KeyNumber onClick={onClick}>2</KeyNumber>
+        <KeyNumber onClick={onClick}>3</KeyNumber>
+        <KeyNumber onClick={onClick}>4</KeyNumber>
+        <KeyNumber onClick={onClick}>5</KeyNumber>
+        <KeyNumber onClick={onClick}>6</KeyNumber>
+        <KeyNumber onClick={onClick}>7</KeyNumber>
+        <KeyNumber onClick={onClick}>8</KeyNumber>
+        <KeyNumber onClick={onClick}>9</KeyNumber>
+        <KeyNumber className='row-4'>0</KeyNumber>
       </KeyPadContainer>
     </Container>
   )

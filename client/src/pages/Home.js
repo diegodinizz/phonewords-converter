@@ -46,7 +46,7 @@ export const Home = () => {
 
   function handleClick (event) {
     if (inputTerm.length <= 5) {
-      setInputTerm([...inputTerm, event.target.value].join(''))
+      setInputTerm([...inputTerm, event.target.innerText].join(''))
     }
   }
 
@@ -76,11 +76,7 @@ export const Home = () => {
         >
           Submit
         </CustomButton>
-        <CustomButton
-          onClick={handleClear}
-          disabled={inputTerm === ''}
-          color='#AEAEB2'
-        >
+        <CustomButton onClick={handleClear} color='#8E8E93'>
           Clear
         </CustomButton>
       </ButtonsContainer>

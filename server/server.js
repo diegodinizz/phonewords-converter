@@ -5,6 +5,8 @@ const path = require('path')
 const app = express()
 const port = process.env.PORT || 5000
 
+app.use('/phonewords/api', router)
+
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')))
 
@@ -12,8 +14,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, '../client/build', 'index.html'))
   })
 }
-
-app.use('/phonewords/api', router)
 
 app.listen(port, () => {
   console.log('Server running on port ' + port)
